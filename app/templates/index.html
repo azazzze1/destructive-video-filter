@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container text-center">
+    <!-- Welcome Section -->
+    <h1 class="display-4 my-4">Добро пожаловать!</h1>
+    <p class="lead">
+        <strong>Descontent</strong> — фильтрация деструктивного видеоконтента 
+    </p>
+
+    <!-- User Authentication Section -->
+    {% if current_user.is_authenticated %}
+        <div class="alert alert-success">
+            Привет, {{ current_user.username }}!
+            <p>Вы вошли в систему. Хотите выйти? <a href="{{ url_for('routes_bp.logout') }}" class="alert-link">Нажмите здесь</a>.</p>
+        </div>
+
+    {% else %}
+        <div class="alert alert-warning">
+            Для доступа к функциям <a href="{{ url_for('routes_bp.login') }}" class="alert-link">войдите</a> или
+            <a href="{{ url_for('routes_bp.register') }}" class="alert-link">зарегистрируйтесь</a>.
+        </div>
+    {% endif %}
+</div>
+
+{% endblock %}

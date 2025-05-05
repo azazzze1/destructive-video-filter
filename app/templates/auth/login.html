@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+    <!-- Login Page Title -->
+    <h1 class="my-4 text-center">Вход</h1>
+
+    <!-- Login Form -->
+    <form method="POST" action="{{ url_for('routes_bp.login') }}" class="mx-auto" style="max-width: 400px;">
+        <!-- CSRF Protection -->
+        {{ form.hidden_tag() }}
+
+        <!-- Email Input -->
+        <div class="form-group">
+            {{ form.email.label(class="form-label") }}
+            {{ form.email(class="form-control", size=32) }}
+        </div>
+
+        <!-- Password Input -->
+        <div class="form-group mt-3">
+            {{ form.password.label(class="form-label") }}
+            {{ form.password(class="form-control", size=32) }}
+        </div>
+
+        <!-- Submit Button -->
+        <div class="text-center mt-4">
+            {{ form.submit(class="btn btn-primary btn-block") }}
+        </div>
+    </form>
+
+    <!-- Registration Link -->
+    <p class="text-center mt-3">
+        Нет аккаунта? <a href="{{ url_for('routes_bp.register') }}">Регистрация</a>
+    </p>
+</div>
+
+{% endblock %}
